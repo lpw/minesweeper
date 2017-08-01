@@ -1,0 +1,28 @@
+.Cell {
+     position: absolute;
+     border: 1px solid lightgrey;
+}
+
+.Cell.mined {
+     background-color: rgba(255, 0, 0, 0);
+}
+
+.Cell .CellContent {
+     padding: 10px;
+     opacity: 0;
+     font-family: 'courier';
+}
+
+.Cell.hinted .CellContent {
+     opacity: 0.1;
+}
+
+.Cell.revealed .CellContent {
+     opacity: 1.0;
+     background-color: lightgrey;
+}
+
+.Cell.mined .CellContent {
+     background-color: red;
+}
+

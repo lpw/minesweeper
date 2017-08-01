@@ -1,0 +1,4 @@
+.Board {
+     position: relative;
+     width: 0; /* for a centerline as since we spread cell ourselves */
+}

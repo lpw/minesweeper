@@ -1,0 +1,21 @@
+parser: babel-eslint
+parserOptions:
+  ecmaVersion: 7
+env:
+  es6: true
+  jest: true
+  browser: true
+plugins:
+  - react
+extends:
+  - eslint:recommended
+  - plugin:react/recommended
+rules:
+  object-shorthand: error
+  no-unused-vars:
+    - error
+    - ignoreRestSiblings: true
+  arrow-parens:
+    - error
+    - as-needed
+  react/prop-types: 0
