@@ -3,7 +3,8 @@ import Board from '../components/Board';
 
 function mapStateToProps(state) {
     return {
-        size: state.game.size
+        size: state.game.size,
+        layout: state.game.layout
     };
 }
 

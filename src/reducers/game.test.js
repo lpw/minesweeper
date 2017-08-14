@@ -12,7 +12,12 @@ const MAX_MINES = 1000;
 test('default game config', () => {
      const newGame = game(undefined, {});
 
-     expect( newGame ).toEqual( {size: DEFAULT_SIZE, numMines: DEFAULT_MINES} );
+     expect( newGame ).toEqual( {
+          size: DEFAULT_SIZE,
+          numMines: DEFAULT_MINES,
+          layout: 'square',
+          cheating: false
+     });
 });
 
 test('inc size', () => {

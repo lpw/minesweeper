@@ -4,8 +4,8 @@ import Cell from '../connectors/Cell';
 import {numCellsFrom} from '../layouts';
 
 function Board(props) {
-    const {size} = props;
-    const numCells = numCellsFrom(size);
+    const {layout, size} = props;
+    const numCells = numCellsFrom(layout, size);
 
     return (
         <div className="Board">

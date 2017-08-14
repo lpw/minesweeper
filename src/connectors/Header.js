@@ -1,10 +1,15 @@
 import {connect} from 'react-redux';
-import {incSize, decSize, incMines, decMines, doCheat, setMines} from '../actions';
+import {
+    incSize, decSize,
+    incMines, decMines,
+    setMines,
+    doCheat, doLayout
+} from '../actions';
 import Header from '../components/Header';
 import {numCellsFrom} from '../layouts';
 
-const getTitle = (size, mines, reveals, name) => {
-    const numCells = numCellsFrom(size);
+const getTitle = (layout, size, mines, reveals, name) => {
+    const numCells = numCellsFrom(layout, size);
     const lost = [...reveals].some(r => [...mines].some(m => m === r));
     const noWay = mines.size >= numCells;
     const won = mines.size + reveals.size >= numCells && reveals.size > 0;
@@ -25,10 +30,10 @@ const getTitle = (size, mines, reveals, name) => {
 
 function mapStateToProps(state) {
     const {game, mines, reveals} = state;
-    const {size, numMines} = game;
+    const {layout, size, numMines} = game;
 
     return {
-        title: getTitle(size, mines, reveals, 'Minesweeper'),
+        title: getTitle(layout, size, mines, reveals, 'Minesweeper'),
         size,
         numMines,
         mines,
@@ -54,11 +59,15 @@ function mapDispatchToProps(dispatch) {
             dispatch(decMines());
             dispatch(setMines());
         },
-        doCheat: cheating => {
-            dispatch(doCheat(cheating));
-        },
         setMines: () => {
             dispatch(setMines());
+        },
+        doLayout: layout => {
+            dispatch(doLayout(layout));
+            dispatch(setMines());
+        },
+        doCheat: cheating => {
+            dispatch(doCheat(cheating));
         }
     }
 }

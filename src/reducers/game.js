@@ -1,5 +1,9 @@
 import {compose} from 'redux';
-import {INC_SIZE, DEC_SIZE, INC_MINES, DEC_MINES, DO_CHEAT} from '../actions'
+import {
+    INC_SIZE, DEC_SIZE,
+    INC_MINES, DEC_MINES,
+    DO_CHEAT, DO_LAYOUT
+} from '../actions'
 
 const DEFAULT_SIZE = 9;
 const DEFAULT_MINES = 10;
@@ -13,8 +17,14 @@ const constrainUpper = ub => val => Math.min(ub, val);
 const constrain = (lb, ub) => compose(constrainLower(lb), constrainUpper(ub));
 const constrainSize = constrain(MIN_SIZE, MAX_SIZE);
 const constrainMines = constrain(MIN_MINES, MAX_MINES);
+const defaultState = {
+    size: DEFAULT_SIZE,
+    numMines: DEFAULT_MINES,
+    layout: 'square',   // per Header component
+    cheating: false
+};
 
-export default(state = {size: DEFAULT_SIZE, numMines: DEFAULT_MINES}, payload) => {
+export default(state = defaultState, payload) => {
 
     switch (payload.type) {
 
@@ -32,6 +42,9 @@ export default(state = {size: DEFAULT_SIZE, numMines: DEFAULT_MINES}, payload) =
 
         case DO_CHEAT:
             return {...state, cheating: payload.cheating}
+
+        case DO_LAYOUT:
+            return {...state, layout: payload.layout}
 
         default:
             return state;

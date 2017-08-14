@@ -8,6 +8,7 @@ function mapStateToProps(state, props) {
         size: state.game.size,
         mines: state.mines,
         reveals: state.reveals,
+        layout: state.game.layout,
         cheating: state.game.cheating
     };
 }

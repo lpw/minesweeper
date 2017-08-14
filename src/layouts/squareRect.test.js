@@ -1,22 +1,4 @@
-const {randomCellsFrom, neighborsOf} = require('./twoDimSquare');
-
-test('randomCellsFrom 3 from 10x10', () => {
-     const cells = randomCellsFrom(3, 10);
-
-     expect( cells.size ).toBe( 3 );
-});
-
-test('randomCellsFrom 5 from 100x100', () => {
-     const cells = randomCellsFrom(5, 100);
-
-     expect( cells.size ).toBe( 5 );
-});
-
-test('randomCellsFrom 10 from 2x2 (max 4)', () => {
-     const cells = randomCellsFrom(10, 2);
-
-     expect( cells.size ).toBe( 4 );
-});
+const {neighborsOf} = require('./squareRect');
 
 test('neighborsOf 0 in 10x10', () => {
      const cells = neighborsOf(0, 10);

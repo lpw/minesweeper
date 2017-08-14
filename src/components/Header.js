@@ -21,6 +21,13 @@ class Header extends Component {
         this.props.doCheat(checked);
     }
 
+    doLayout = event => {
+        const {target} = event;
+        const {value} = target;
+
+        this.props.doLayout(value);
+    }
+
     render() {
         const {
             title,
@@ -50,6 +57,16 @@ class Header extends Component {
                 <h2>{title}</h2>
 
                 <div className="Controls RightControls">
+
+                    <select
+                        className="Layout"
+                        onChange={this.doLayout}
+                    >
+                        <option key="square" value="square">Square</option>
+                        <option key="tall" value="tall">Tall</option>
+                        <option key="wide" value="wide">Wide</option>
+                        <option key="random" value="random">Random</option>
+                    </select>
 
                     <div className="Size">
                         <Button onClick={incSize} content="^"></Button>

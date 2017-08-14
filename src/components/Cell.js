@@ -10,10 +10,11 @@ function Cell(props) {
         reveals,
         mines,
         cheating,
+        layout,
         reveal
     } = props;
 
-    const pos = posOf(name, size);
+    const pos = posOf(layout, name, size);
     const {x, y} = pos;
     const style = {top: y, left: x};
 
@@ -26,7 +27,7 @@ function Cell(props) {
         hinted: cheating
     });
 
-    const neighbors = neighborsOf(name, size);
+    const neighbors = neighborsOf(layout, name, size);
     const neighboringMineCount = [...neighbors].filter(neighbor => mines.has(neighbor)).length
     const neighboringMineSymbol = neighboringMineCount > 0
         ? neighboringMineCount
