@@ -6,6 +6,7 @@ export const INC_MINES = 'INC_MINES';
 export const DEC_MINES = 'DEC_MINES';
 export const DO_CHEAT = 'DO_CHEAT';
 export const DO_LAYOUT = 'DO_LAYOUT';
+export const TOGGLE_FLAG = 'TOGGLE_FLAG';
 export const SET_MINES = 'SET_MINES';
 export const REVEAL = 'REVEAL';
 export const RESET = 'RESET';
@@ -77,6 +78,13 @@ const setMinesAction = mines => {
     return {
         type: SET_MINES,
         mines
+    };
+};
+
+export const toggleFlag = name => {
+    return {
+        type: TOGGLE_FLAG,
+        name
     };
 };
 

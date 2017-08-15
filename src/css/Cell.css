@@ -17,12 +17,17 @@
      opacity: 0.1;
 }
 
+.Cell.flagged .CellContent {
+     opacity: 1.0;
+}
+
 .Cell.revealed .CellContent {
      opacity: 1.0;
      background-color: lightgrey;
 }
 
-.Cell.mined .CellContent {
+.Cell.hinted.mined .CellContent,
+.Cell.revealed.mined .CellContent {
      background-color: red;
 }
 

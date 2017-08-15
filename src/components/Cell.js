@@ -7,10 +7,13 @@ function Cell(props) {
     const {
         name,
         size,
-        reveals,
         mines,
+        mined,
+        flagged,
+        revealed,
         cheating,
         layout,
+        toggleFlag,
         reveal
     } = props;
 
@@ -18,26 +21,28 @@ function Cell(props) {
     const {x, y} = pos;
     const style = {top: y, left: x};
 
-    const revealed = reveals.has(name);
-    const mined = mines.has(name);
     const className = classNames({
         Cell: true,
         mined,
+        flagged,
         revealed,
         hinted: cheating
     });
 
     const neighbors = neighborsOf(layout, name, size);
     const neighboringMineCount = [...neighbors].filter(neighbor => mines.has(neighbor)).length
-    const neighboringMineSymbol = neighboringMineCount > 0
-        ? neighboringMineCount
-        : <div>&nbsp;</div>;
+    const neighboringMineSymbol = flagged && !revealed
+        ? <div>?</div>
+        : neighboringMineCount > 0
+            ? neighboringMineCount
+            : <div>&nbsp;</div>
+    ;
 
     return (
         <div
             className={className}
             style={style}
-            onClick={() => reveal(name)}
+            onClick={event => event.shiftKey ? toggleFlag(name) : reveal(name)}
         >
             <div className="CellContent">
                 {neighboringMineSymbol}
