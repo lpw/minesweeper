@@ -10,6 +10,7 @@ export const TOGGLE_FLAG = 'TOGGLE_FLAG';
 export const SET_MINES = 'SET_MINES';
 export const REVEAL = 'REVEAL';
 export const RESET = 'RESET';
+export const INC_TIMER = 'INC_TIMER';
 
 /**
  * @param {Number} n number of cells to return
@@ -100,6 +101,12 @@ export const setMines = () => {
         dispatch(setMinesAction(mines));
     }
 }
+
+export const incTimer = () => {
+    return {
+        type: INC_TIMER
+    };
+};
 
 export const revealAction = (name, reveals, mines, size, layout) => {
     return {

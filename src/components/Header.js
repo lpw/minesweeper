@@ -7,9 +7,15 @@ class Header extends Component {
     // but choose to do componentDidMount here  as we need to init somewhere,
     // and we're already setting mines here because of other functions in Header
     componentDidMount() {
-        const {setMines} = this.props;
+        const {setMines, incTimer} = this.props;
 
         setMines();
+
+        this._timer = setInterval(incTimer, 1000);
+    }
+
+    componentWillUnmount() {
+        clearInterval(this._timer);
     }
 
     // this could also be done outside the component for now,
@@ -33,6 +39,7 @@ class Header extends Component {
             title,
             size,
             numMines,
+            timer,
             incSize,
             decSize,
             incMines,
@@ -52,6 +59,10 @@ class Header extends Component {
                         Cheat
                     </label>
 
+                    <div className="Timer">
+                        Timer: {timer} seconds
+                    </div>
+
                 </div>
 
                 <h2>{title}</h2>
@@ -69,15 +80,15 @@ class Header extends Component {
                     </select>
 
                     <div className="Size">
-                        <Button onClick={incSize} content="^"></Button>
+                        <Button onClick={incSize}>^</Button>
                         <div>{size} size</div>
-                        <Button onClick={decSize} content="v"></Button>
+                        <Button onClick={decSize}>v</Button>
                     </div>
 
                     <div className="Mines">
-                        <Button onClick={incMines} content="^"></Button>
+                        <Button onClick={incMines}>^</Button>
                         <div>{numMines} mines</div>
-                        <Button onClick={decMines} content="v"></Button>
+                        <Button onClick={decMines}>v</Button>
                     </div>
 
                 </div>

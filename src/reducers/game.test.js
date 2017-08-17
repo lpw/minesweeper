@@ -16,7 +16,8 @@ test('default game config', () => {
           size: DEFAULT_SIZE,
           numMines: DEFAULT_MINES,
           layout: 'square',
-          cheating: false
+          cheating: false,
+          timer: 0
      });
 });
 

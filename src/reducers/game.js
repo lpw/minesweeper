@@ -2,7 +2,10 @@ import {compose} from 'redux';
 import {
     INC_SIZE, DEC_SIZE,
     INC_MINES, DEC_MINES,
-    DO_CHEAT, DO_LAYOUT
+    DO_CHEAT,
+    DO_LAYOUT,
+    RESET,
+    INC_TIMER
 } from '../actions'
 
 const DEFAULT_SIZE = 9;
@@ -21,7 +24,8 @@ const defaultState = {
     size: DEFAULT_SIZE,
     numMines: DEFAULT_MINES,
     layout: 'square',   // per Header component
-    cheating: false
+    cheating: false,
+    timer: 0
 };
 
 export default(state = defaultState, payload) => {
@@ -45,6 +49,12 @@ export default(state = defaultState, payload) => {
 
         case DO_LAYOUT:
             return {...state, layout: payload.layout}
+
+        case INC_TIMER:
+            return {...state, timer: state.timer + 1}
+
+        case RESET:
+            return {...state, timer: 0}
 
         default:
             return state;

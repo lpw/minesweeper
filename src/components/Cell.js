@@ -38,6 +38,7 @@ function Cell(props) {
             : <div>&nbsp;</div>
     ;
 
+    // consider moving the onClick function creation into a standard React component for performance
     return (
         <div
             className={className}

@@ -1,4 +1,4 @@
-timers
+selectors or at least some memoization on funcs like neighbors
 animations
 use only css for Cell rendering (maybe with psuedo-elements) instead of combining with content
 move functional react components back to real react components to avoid making functions in render

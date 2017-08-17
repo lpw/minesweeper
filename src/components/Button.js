@@ -2,11 +2,11 @@ import React from 'react';
 import '../css/Button.css';
 
 function Button(props) {
-    const {onClick, content} = props;
+    const {onClick, children} = props;
 
     return (
       <div className="Button" onClick={onClick}>
-        {content}
+        {children}
       </div>
     );
 }
